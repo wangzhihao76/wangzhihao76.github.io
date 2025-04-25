@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -18,13 +18,17 @@
     <!-- 导航栏 -->
     <nav class="bg-blue-900 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">济南尧林贸易有限公司</a>
+            <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:text-gray-300">首页</a></li>
-                <li><a href="#" class="hover:text-gray-300">产品</a></li>
-                <li><a href="#" class="hover:text-gray-300">关于我们</a></li>
-                <li><a href="#" class="hover:text-gray-300">联系我们</a></li>
+                <li><a href="#" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
+                <li><a href="#" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a></li>
+                <li><a href="#" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
+                <li><a href="#" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
             </ul>
+            <div class="flex space-x-2">
+                <button id="lang-zh" class="text-white hover:text-gray-300">中文</button>
+                <button id="lang-en" class="text-white hover:text-gray-300">English</button>
+            </div>
         </div>
     </nav>
 
@@ -32,30 +36,30 @@
     <section class="bg-cover bg-center h-screen relative" style="background-image: url('https://picsum.photos/1920/1080?image=1020');">
         <div class="absolute inset-0 bg-blue-900 opacity-70"></div>
         <div class="container mx-auto h-full flex flex-col justify-center items-center text-white z-10">
-            <h1 class="text-5xl font-bold mb-4">欢迎选购优质木质地板</h1>
-            <p class="text-xl mb-8">提供多种款式与高品质的木质地板</p>
-            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200">了解更多</a>
+            <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购优质木质地板" data-lang-en="Welcome to choose high-quality wooden floors">欢迎选购优质木质地板</h1>
+            <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的木质地板" data-lang-en="Provide a variety of styles and high-quality wooden floors">提供多种款式与高品质的木质地板</p>
+            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
         </div>
     </section>
 
     <!-- 产品区域 -->
     <section class="container mx-auto py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">我们的木质地板产品</h2>
+        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="我们的木质地板产品" data-lang-en="Our Wooden Floor Products">我们的木质地板产品</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <img src="https://picsum.photos/300/200?image=10" alt="实木地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2">实木地板</h3>
-                <p class="text-gray-600">精选天然木材，纹理清晰自然，脚感舒适，为家居增添自然温馨氛围。</p>
+                <h3 class="text-xl font-bold mb-2" data-lang-zh="实木地板" data-lang-en="Solid Wood Floors">实木地板</h3>
+                <p class="text-gray-600" data-lang-zh="精选天然木材，纹理清晰自然，脚感舒适，为家居增添自然温馨氛围。" data-lang-en="Selected natural wood with clear and natural textures, comfortable foot feeling, adding a natural and warm atmosphere to your home.">精选天然木材，纹理清晰自然，脚感舒适，为家居增添自然温馨氛围。</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <img src="https://picsum.photos/300/200?image=20" alt="强化复合地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2">强化复合地板</h3>
-                <p class="text-gray-600">耐磨性能出色，安装方便，价格实惠，适合多种场所使用。</p>
+                <h3 class="text-xl font-bold mb-2" data-lang-zh="强化复合地板" data-lang-en="Laminate Flooring">强化复合地板</h3>
+                <p class="text-gray-600" data-lang-zh="耐磨性能出色，安装方便，价格实惠，适合多种场所使用。" data-lang-en="Excellent wear resistance, easy installation, affordable price, suitable for a variety of places.">耐磨性能出色，安装方便，价格实惠，适合多种场所使用。</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <img src="https://picsum.photos/300/200?image=30" alt="多层复合地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2">多层复合地板</h3>
-                <p class="text-gray-600">稳定性好，不易变形，结合了实木与强化地板的优点。</p>
+                <h3 class="text-xl font-bold mb-2" data-lang-zh="多层复合地板" data-lang-en="Multi-layer Composite Flooring">多层复合地板</h3>
+                <p class="text-gray-600" data-lang-zh="稳定性好，不易变形，结合了实木与强化地板的优点。" data-lang-en="Good stability, not easy to deform, combining the advantages of solid wood and laminate floors.">稳定性好，不易变形，结合了实木与强化地板的优点。</p>
             </div>
         </div>
     </section>
@@ -63,36 +67,36 @@
     <!-- 关于我们区域 -->
     <section class="bg-blue-900 text-white py-16">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">关于我们</h2>
-            <p class="text-lg mb-8">济南尧林贸易有限公司是一家专业从事木质地板外贸业务的公司，拥有丰富的行业经验和专业的团队。我们严格把控木材来源和生产工艺，致力于为全球客户提供高品质、环保的木质地板产品。</p>
-            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200">了解更多</a>
+            <h2 class="text-3xl font-bold mb-8" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</h2>
+            <p class="text-lg mb-8" data-lang-zh="济南尧林贸易有限公司是一家专业从事木质地板外贸业务的公司，拥有丰富的行业经验和专业的团队。我们严格把控木材来源和生产工艺，致力于为全球客户提供高品质、环保的木质地板产品。" data-lang-en="Jinan Yaolin Trading Co., Ltd. is a professional company engaged in the foreign trade business of wooden floors. It has rich industry experience and a professional team. We strictly control the wood source and production process, and are committed to providing high-quality and environmentally friendly wooden floor products for global customers.">济南尧林贸易有限公司是一家专业从事木质地板外贸业务的公司，拥有丰富的行业经验和专业的团队。我们严格把控木材来源和生产工艺，致力于为全球客户提供高品质、环保的木质地板产品。</p>
+            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
         </div>
     </section>
 
     <!-- 联系我们区域 -->
     <section class="container mx-auto py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">联系我们</h2>
+        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</h2>
         <form class="max-w-md mx-auto">
             <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-bold mb-2">姓名</label>
-                <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-md" placeholder="请输入您的姓名">
+                <label for="name" class="block text-gray-700 font-bold mb-2" data-lang-zh="姓名" data-lang-en="Name">姓名</label>
+                <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-md" placeholder="请输入您的姓名" data-placeholder-zh="请输入您的姓名" data-placeholder-en="Please enter your name">
             </div>
             <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-bold mb-2">邮箱</label>
-                <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-md" placeholder="请输入您的邮箱">
+                <label for="email" class="block text-gray-700 font-bold mb-2" data-lang-zh="邮箱" data-lang-en="Email">邮箱</label>
+                <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-md" placeholder="请输入您的邮箱" data-placeholder-zh="请输入您的邮箱" data-placeholder-en="Please enter your email">
             </div>
             <div class="mb-4">
-                <label for="message" class="block text-gray-700 font-bold mb-2">留言</label>
-                <textarea id="message" class="w-full p-3 border border-gray-300 rounded-md" rows="4" placeholder="请输入您的留言"></textarea>
+                <label for="message" class="block text-gray-700 font-bold mb-2" data-lang-zh="留言" data-lang-en="Message">留言</label>
+                <textarea id="message" class="w-full p-3 border border-gray-300 rounded-md" rows="4" placeholder="请输入您的留言" data-placeholder-zh="请输入您的留言" data-placeholder-en="Please enter your message"></textarea>
             </div>
-            <button type="submit" class="bg-blue-900 text-white py-3 px-6 rounded-full hover:bg-blue-800">提交</button>
+            <button type="submit" class="bg-blue-900 text-white py-3 px-6 rounded-full hover:bg-blue-800" data-lang-zh="提交" data-lang-en="Submit">提交</button>
         </form>
     </section>
 
     <!-- 页脚 -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2025 济南尧林贸易有限公司. 保留所有权利.</p>
+            <p data-lang-zh="&copy; 2025 济南尧林贸易有限公司. 保留所有权利." data-lang-en="&copy; 2025 Jinan Yaolin Trading Co., Ltd. All rights reserved.">&copy; 2025 济南尧林贸易有限公司. 保留所有权利.</p>
             <div class="flex justify-center space-x-4 mt-4">
                 <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-twitter"></i></a>
@@ -100,6 +104,35 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const langZhBtn = document.getElementById('lang-zh');
+        const langEnBtn = document.getElementById('lang-en');
+
+        langZhBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'zh-CN';
+            const elements = document.querySelectorAll('[data-lang-zh]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-zh');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-zh]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-zh');
+            });
+        });
+
+        langEnBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'en';
+            const elements = document.querySelectorAll('[data-lang-en]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-en');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-en]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-en');
+            });
+        });
+    </script>
 </body>
 
 </html>
