@@ -10,20 +10,21 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* 添加平滑滚动效果 */
         }
     </style>
 </head>
 
 <body class="bg-gray-100">
     <!-- 导航栏 -->
-    <nav class="bg-blue-900 text-white p-4">
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
-                <li><a href="#" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a></li>
-                <li><a href="#" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
-                <li><a href="#" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
+                <li><a href="#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
+                <li><a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a></li>
+                <li><a href="#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
+                <li><a href="#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
             </ul>
             <div class="flex space-x-2">
                 <button id="lang-zh" class="text-white hover:text-gray-300">中文</button>
@@ -32,18 +33,18 @@
         </div>
     </nav>
 
-    <!-- 英雄区域1 -->
-    <section class="bg-cover bg-center h-screen relative" style="background-image: url('https://picsum.photos/1920/1080?image=1020');">
+    <!-- 英雄区域1 - 添加id="home" -->
+    <section id="home" class="bg-cover bg-center h-screen relative" style="background-image: url('https://picsum.photos/1920/1080?image=1020');">
         <div class="absolute inset-0 bg-blue-900 opacity-70"></div>
         <div class="container mx-auto h-full flex flex-col justify-center items-center text-white z-10">
             <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购优质木质地板" data-lang-en="Welcome to choose high-quality wooden floors">欢迎选购优质木质地板</h1>
             <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的木质地板" data-lang-en="Provide a variety of styles and high-quality wooden floors">提供多种款式与高品质的木质地板</p>
-            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
+            <a href="#products" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
         </div>
     </section>
 
-    <!-- 产品区域 -->
-    <section class="container mx-auto py-16">
+    <!-- 产品区域 - 添加id="products" -->
+    <section id="products" class="container mx-auto py-16">
         <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="我们的木质地板产品" data-lang-en="Our Wooden Floor Products">我们的木质地板产品</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
@@ -64,17 +65,17 @@
         </div>
     </section>
 
-    <!-- 关于我们区域 -->
-    <section class="bg-blue-900 text-white py-16">
+    <!-- 关于我们区域 - 添加id="about" -->
+    <section id="about" class="bg-blue-900 text-white py-16">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</h2>
             <p class="text-lg mb-8" data-lang-zh="济南尧林贸易有限公司是一家专业从事木质地板外贸业务的公司，拥有丰富的行业经验和专业的团队。我们严格把控木材来源和生产工艺，致力于为全球客户提供高品质、环保的木质地板产品。" data-lang-en="Jinan Yaolin Trading Co., Ltd. is a professional company engaged in the foreign trade business of wooden floors. It has rich industry experience and a professional team. We strictly control the wood source and production process, and are committed to providing high-quality and environmentally friendly wooden floor products for global customers.">济南尧林贸易有限公司是一家专业从事木质地板外贸业务的公司，拥有丰富的行业经验和专业的团队。我们严格把控木材来源和生产工艺，致力于为全球客户提供高品质、环保的木质地板产品。</p>
-            <a href="#" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
+            <a href="#contact" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a>
         </div>
     </section>
 
-    <!-- 联系我们区域 -->
-    <section class="container mx-auto py-16">
+    <!-- 联系我们区域 - 添加id="contact" -->
+    <section id="contact" class="container mx-auto py-16">
         <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</h2>
         <form class="max-w-md mx-auto">
             <div class="mb-4">
@@ -136,4 +137,3 @@
 </body>
 
 </html>
-    
