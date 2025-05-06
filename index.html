@@ -11,6 +11,74 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth; /* 添加平滑滚动效果 */
         }
+        /* 英雄区域样式调整 */
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
+        /* 图片容器样式 */
+       .image-container {
+            display: flex;
+            width: 300%; /* 假设三张图片，所以是 300% */
+            height: 100%;
+            transition: transform 1s ease-in-out; /* 添加过渡动画 */
+        }
+        /* 单个图片样式 */
+       .image-container img {
+            min-width: 33.333333%; /* 假设三张图片，所以每张图片占 1/3 */
+            object-fit: cover;
+        }
+
+        /*[data-lang-en] {
+          text-indent: 2em;
+          white-space: pre-wrap;
+        }*/
+        /* 下拉菜单样式 */
+       .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e3a8a;
+            min-width: max-content;
+            width: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            padding: 8px 0;
+            text-align: center; /* Center text */
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 20px; /* Increased horizontal padding */
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .dropdown-content a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Product section header */
+        .product-section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .product-section-header h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 
@@ -21,7 +89,14 @@
             <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
             <ul class="flex space-x-4">
                 <li><a href="#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
-                <li><a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a></li>
+                <li class="dropdown">
+                    <a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a>
+                    <div class="dropdown-content">
+                        <a href="#cutting-section" data-lang-zh="激光打标机" data-lang-en="Fiber laser cutting machine">激光打标机</a>
+                        <a href="#welding-section" data-lang-zh="激光焊接机" data-lang-en="Fiber laser welding machine">激光焊接机</a>
+                        <a href="#marking-section" data-lang-zh="激光切割机" data-lang-en="Fiber laser marking machine">激光切割机</a>
+                    </div>
+                </li>
                 <li><a href="#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
                 <li><a href="#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
             </ul>
@@ -34,7 +109,13 @@
     </nav>
 
     <!-- 英雄区域1 - 添加id="home" -->
-    <section id="home" class="bg-cover bg-center h-screen relative">
+    <section id="home" class="h-screen relative">
+        <div class="image-container" id="imageContainer">
+            <!-- 请替换为你的本地图片文件名 -->
+            <img src="image1/1746180610407.jpg" alt="Image 1">
+            <img src="image1/1746180646953.jpg" alt="Image 2">
+            <img src="image1/1746180695441.jpg" alt="Image 3">
+        </div>
         <div class="container mx-auto h-full flex flex-col justify-center items-center text-white z-10">
             <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购" data-lang-en="Welcome to choose high-quality products">欢迎选购</h1>
             <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的产品" data-lang-en="Provide a variety of styles and high-quality product">提供多种款式与高品质的产品</p>
@@ -44,22 +125,178 @@
 
     <!-- 产品区域 - 添加id="products" -->
     <section id="products" class="container mx-auto py-16">
-        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="我们的木质地板产品" data-lang-en="Our Wooden Floor Products">我们的木质地板产品</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <img src="https://picsum.photos/300/200?image=10" alt="实木地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2" data-lang-zh="实木地板" data-lang-en="Solid Wood Floors">实木地板</h3>
-                <p class="text-gray-600" data-lang-zh="精选天然木材，纹理清晰自然，脚感舒适，为家居增添自然温馨氛围。" data-lang-en="Selected natural wood with clear and natural textures, comfortable foot feeling, adding a natural and warm atmosphere to your home.">精选天然木材，纹理清晰自然，脚感舒适，为家居增添自然温馨氛围。</p>
+        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="我们的产品" data-lang-en="Our Products">我们的产品</h2>
+        
+        <!-- 激光打标机部分 -->
+        <div id="cutting-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光打标机" data-lang-en="Fiber Laser Cutting Machine">激光打标机</h2>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <img src="https://picsum.photos/300/200?image=20" alt="强化复合地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2" data-lang-zh="强化复合地板" data-lang-en="Laminate Flooring">强化复合地板</h3>
-                <p class="text-gray-600" data-lang-zh="耐磨性能出色，安装方便，价格实惠，适合多种场所使用。" data-lang-en="Excellent wear resistance, easy installation, affordable price, suitable for a variety of places.">耐磨性能出色，安装方便，价格实惠，适合多种场所使用。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod1/1-主图.png" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Laser Source Brand: RAYCUS JPT MAX IPG" data-lang-en="Laser Source Brand: RAYCUS JPT MAX IPG">Laser Source Brand: RAYCUS JPT MAX IPG</li>
+                        <li data-lang-zh="Control System Brand: BJJCZ" data-lang-en="Control System Brand: BJJCZ">Control System Brand: BJJCZ</li>
+                        <li data-lang-zh="Weight (KG): 50KG" data-lang-en="Weight (KG): 50KG">Weight (KG): 50KG</li>
+                        <li data-lang-zh="Marking Area: 70mm70mm--- 300mm300mm" data-lang-en="Marking Area: 70mm70mm--- 300mm300mm">Marking Area: 70mm70mm--- 300mm300mm</li>
+                        <li data-lang-zh="Warranty of core components: 3 years" data-lang-en="Warranty of core components: 3 years">Warranty of core components: 3 years</li>
+                        <li data-lang-zh="Feature: Air - cooled" data-lang-en="Feature: Air - cooled">Feature: Air - cooled</li>
+                        <li data-lang-zh="Laser Power: 20W/30W/50W/60w/80w/100W" data-lang-en="Laser Power: 20W/30W/50W/60w/80w/100W">Laser Power: 20W/30W/50W/60w/80w/100W</li>
+                        <li data-lang-zh="Laser head: Sino - galvo Laser Head" data-lang-en="Laser head: Sino - galvo Laser Head">Laser head: Sino - galvo Laser Head</li>
+                        <li data-lang-zh="Applicable Material: Metal Materials" data-lang-en="Applicable Material: Metal Materials">Applicable Material: Metal Materials</li>
+                        <li data-lang-zh="Marking Speed: 0 - 7000mm/s" data-lang-en="Marking Speed: 0 - 7000mm/s">Marking Speed: 0 - 7000mm/s</li>
+                        <li data-lang-zh="Marking Depth: 0.01 - 2mm" data-lang-en="Marking Depth: 0.01 - 2mm">Marking Depth: 0.01 - 2mm</li>
+                        <li data-lang-zh="Power supply: 110V/220V 10% 50Hz/60Hz" data-lang-en="Power supply: 110V/220V 10% 50Hz/60Hz">Power supply: 110V/220V 10% 50Hz/60Hz</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod1/2-主图.jpg" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Application: Laser Marking" data-lang-en="Application: Laser Marking">Application: Laser Marking</li>
+                        <li data-lang-zh="Working Accuracy: 0.001mm" data-lang-en="Working Accuracy: 0.001mm">Working Accuracy: 0.001mm</li>
+                        <li data-lang-zh="Control System Brand: EZCAD" data-lang-en="Control System Brand: EZCAD">Control System Brand: EZCAD</li>
+                        <li data-lang-zh="Core Components: Motor, Other, galvo scanner head, EZCAD 2 control card, F-theta lens" data-lang-en="Core Components: Motor, Other, galvo scanner head, EZCAD 2 control card, F-theta lens">Core Components: Motor, Other, galvo scanner head, EZCAD 2 control card, F-theta lens</li>
+                        <li data-lang-zh="Mode of Operation: continuous wave" data-lang-en="Mode of Operation: continuous wave">Mode of Operation: continuous wave</li>
+                        <li data-lang-zh="Configuration: portable type" data-lang-en="Configuration: portable type">Configuration: portable type</li>
+                        <li data-lang-zh="Feature: Air - cooled" data-lang-en="Feature: Air - cooled">Feature: Air - cooled</li>
+                        <li data-lang-zh="Product name: Lazer Marking Machine" data-lang-en="Product name: Lazer Marking Machine">Product name: Lazer Marking Machine</li>
+                        <li data-lang-zh="Laser Power: 20W/30W/50W/100W" data-lang-en="Laser Power: 20W/30W/50W/100W">Laser Power: 20W/30W/50W/100W</li>
+                        <li data-lang-zh="Laser source: IPG Raycus Max JPT" data-lang-en="Laser source: IPG Raycus Max JPT">Laser source: IPG Raycus Max JPT</li>
+                        <li data-lang-zh="Laser wavelength: 1064nm" data-lang-en="Laser wavelength: 1064nm">Laser wavelength: 1064nm</li>
+                        <li data-lang-zh="Applicable Material: Metal Materials" data-lang-en="Applicable Material: Metal Materials">Applicable Material: Metal Materials</li>
+                        <li data-lang-zh="Marking Speed: 0 - 7000mm/s" data-lang-en="Marking Speed: 0 - 7000mm/s">Marking Speed: 0 - 7000mm/s</li>
+                        <li data-lang-zh="Marking Depth: 0 - 1mm" data-lang-en="Marking Depth: 0 - 1mm">Marking Depth: 0 - 1mm</li>
+                        <li data-lang-zh="Control system: EZCAD Control System" data-lang-en="Control system: EZCAD Control System">Control system: EZCAD Control System</li>
+                        <li data-lang-zh="Cooling system: Air Cooling System" data-lang-en="Cooling system: Air Cooling System">Cooling system: Air Cooling System</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod1/3-主图.jpg" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Laser Type: Fiber laser" data-lang-en="Laser Type: Fiber laser">Laser Type: Fiber laser</li>
+                        <li data-lang-zh="Laser Power: 20W / 30W / 50W optional" data-lang-en="Laser Power: 20W / 30W / 50W optional">Laser Power: 20W / 30W / 50W optional</li>
+                        <li data-lang-zh="Laser Wavelength: 1064nm" data-lang-en="Laser Wavelength: 1064nm">Laser Wavelength: 1064nm</li>
+                        <li data-lang-zh="Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional" data-lang-en="Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional">Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional</li>
+                        <li data-lang-zh="Marking Line Width: 0.01 - 0.1mm" data-lang-en="Marking Line Width: 0.01 - 0.1mm">Marking Line Width: 0.01 - 0.1mm</li>
+                        <li data-lang-zh="Max Marking Speed: 7000mm/s" data-lang-en="Max Marking Speed: 7000mm/s">Max Marking Speed: 7000mm/s</li>
+                        <li data-lang-zh="Min Letter: 0.15mm" data-lang-en="Min Letter: 0.15mm">Min Letter: 0.15mm</li>
+                        <li data-lang-zh="Software: EZCAD2" data-lang-en="Software: EZCAD2">Software: EZCAD2</li>
+                        <li data-lang-zh="Cooling Way: Forced air cooling" data-lang-en="Cooling Way: Forced air cooling">Cooling Way: Forced air cooling</li>
+                        <li data-lang-zh="Beam Quality: Less than 1.4mm" data-lang-en="Beam Quality: Less than 1.4mm">Beam Quality: Less than 1.4mm</li>
+                        <li data-lang-zh="Input Power: 0.5KW" data-lang-en="Input Power: 0.5KW">Input Power: 0.5KW</li>
+                        <li data-lang-zh="Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop" data-lang-en="Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop">Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop</li> 
+                    </ul>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <img src="https://picsum.photos/300/200?image=30" alt="多层复合地板" class="w-full h-48 object-cover mb-4">
-                <h3 class="text-xl font-bold mb-2" data-lang-zh="多层复合地板" data-lang-en="Multi-layer Composite Flooring">多层复合地板</h3>
-                <p class="text-gray-600" data-lang-zh="稳定性好，不易变形，结合了实木与强化地板的优点。" data-lang-en="Good stability, not easy to deform, combining the advantages of solid wood and laminate floors.">稳定性好，不易变形，结合了实木与强化地板的优点。</p>
+        </div>
+        
+        <!-- 激光焊接机部分 -->
+        <div id="welding-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光焊接机" data-lang-en="Fiber Laser Welding Machine">激光焊接机</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod2/1-主图.png" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Machine Model: Handheld metal laser welding machine" data-lang-en="Machine Model: Handheld metal laser welding machine">Machine Model: Handheld metal laser welding machine</li>
+                        <li data-lang-zh="Laser Power: 1000W, 2000W, 3000W(optional)" data-lang-en="Laser Power: 1000W, 2000W, 3000W(optional)">Laser Power: 1000W, 2000W, 3000W(optional)</li>
+                        <li data-lang-zh="laser wave length: 1070 NM" data-lang-en="laser wave length: 1070 NM">laser wave length: 1070 NM</li>
+                        <li data-lang-zh="Fiber length: Standard10M / Maximum 15M" data-lang-en="Fiber length: Standard10M / Maximum 15M">Fiber length: Standard10M / Maximum 15M</li>
+                        <li data-lang-zh="Welding speed range: 0 - 120 mm/s" data-lang-en="Welding speed range: 0 - 120 mm/s">Welding speed range: 0 - 120 mm/s</li>
+                        <li data-lang-zh="Cooling chiller: Industrial water chiller" data-lang-en="Cooling chiller: Industrial water chiller">Cooling chiller: Industrial water chiller</li>
+                        <li data-lang-zh="Working environment temperature range: 15 - 35 °C" data-lang-en="Working environment temperature range: 15 - 35 °C">Working environment temperature range: 15 - 35 °C</li>
+                        <li data-lang-zh="Welding thickness recommendations: 0.5 - 3mm" data-lang-en="Welding thickness recommendations: 0.5 - 3mm">Welding thickness recommendations: 0.5 - 3mm</li>
+                        <li data-lang-zh="working voltage: 220 V" data-lang-en="working voltage: 220 V">working voltage: 220 V</li> 
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod2/2-主图.jpg" alt="激光焊接机应用" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Laser wavelength: 1080nm" data-lang-en="Laser wavelength: 1080nm">Laser wavelength: 1080nm</li>
+                        <li data-lang-zh="Fiber length: 10M/Maximum 15M" data-lang-en="Fiber length: 10M/Maximum 15M">Fiber length: 10M/Maximum 15M</li>
+                        <li data-lang-zh="Speed range: 0 - 120mm/s" data-lang-en="Speed range: 0 - 120mm/s">Speed range: 0 - 120mm/s</li>
+                        <li data-lang-zh="Operating Mode: Continuous Welding" data-lang-en="Operating Mode: Continuous Welding">Operating Mode: Continuous Welding</li>
+                        <li data-lang-zh="Operating System: Handheld Welding System" data-lang-en="Operating System: Handheld Welding System">Operating System: Handheld Welding System</li>
+                        <li data-lang-zh="Cooling water chiller: Industrial chiller" data-lang-en="Cooling water chiller: Industrial chiller">Cooling water chiller: Industrial chiller</li>
+                        <li data-lang-zh="Working environment temperature range: 15 - 35°C" data-lang-en="Working environment temperature range: 15 - 35°C">Working environment temperature range: 15 - 35°C</li>
+                        <li data-lang-zh="Humidity range Operating environment: < 70% non - condensing" data-lang-en="Humidity range Operating environment: < 70% non - condensing">Humidity range Operating environment: < 70% non - condensing</li>
+                        <li data-lang-zh="Welding gap requirements: ≤0.5mm" data-lang-en="Welding gap requirements: ≤0.5mm">Welding gap requirements: ≤0.5mm</li>
+                        <li data-lang-zh="Laser power: 2000w" data-lang-en="Laser power: 2000w">Laser power: 2000w</li> 
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod2/3-主图.jpg" alt="激光焊接机应用" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Laser power: 1000W/1500W/2000W" data-lang-en="Laser power: 1000W/1500W/2000W">Laser power: 1000W/1500W/2000W</li>
+                        <li data-lang-zh="Laser wavelength: 1070 NM" data-lang-en="Laser wavelength: 1070 NM">Laser wavelength: 1070 NM</li>
+                        <li data-lang-zh="Fiber length: 10M ~ 15M" data-lang-en="Fiber length: 10M ~ 15M">Fiber length: 10M ~ 15M</li>
+                        <li data-lang-zh="Working mode: Continuous / modulation" data-lang-en="Working mode: Continuous / modulation">Working mode: Continuous / modulation</li>
+                        <li data-lang-zh="Welder speed: 0 ~ 120 mm/s" data-lang-en="Welder speed: 0 ~ 120 mm/s">Welder speed: 0 ~ 120 mm/s</li>
+                        <li data-lang-zh="Cooling water: Built-in water cooler" data-lang-en="Cooling water: Built-in water cooler">Cooling water: Built-in water cooler</li>
+                        <li data-lang-zh="Temperature: 15 ~ 35 °C" data-lang-en="Temperature: 15 ~ 35 °C">Temperature: 15 ~ 35 °C</li>
+                        <li data-lang-zh="Welding thickness: 0.5 - 3mm" data-lang-en="Welding thickness: 0.5 - 3mm">Welding thickness: 0.5 - 3mm</li>
+                        <li data-lang-zh="Welding penetration depth: 0.1 - 3mm" data-lang-en="Welding penetration depth: 0.1 - 3mm">Welding penetration depth: 0.1 - 3mm</li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 激光切割机部分 -->
+        <div id="marking-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光切割机" data-lang-en="Fiber Laser Marking Machine">激光切割机</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod3/1-主图.png" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Working area: 30501530mm" data-lang-en="Working area: 30501530mm">Working area: 30501530mm</li>
+                        <li data-lang-zh="(Optional): (Optional)" data-lang-en="(Optional): (Optional)">(Optional): (Optional)</li>
+                        <li data-lang-zh="Laser power: 3000W/2000W/1500W/1000W" data-lang-en="Laser power: 3000W/2000W/1500W/1000W">Laser power: 3000W/2000W/1500W/1000W</li>
+                        <li data-lang-zh="Dimensions: 452030301950mm" data-lang-en="Dimensions: 452030301950mm">Dimensions: 45203030*1950mm</li>
+                        <li data-lang-zh="X/y axis positioning accuracy: ±0.05mm" data-lang-en="X/y axis positioning accuracy: ±0.05mm">X/y axis positioning accuracy: ±0.05mm</li>
+                        <li data-lang-zh="X/y axis repeat positioning accuracy: ±0.03mm" data-lang-en="X/y axis repeat positioning accuracy: ±0.03mm">X/y axis repeat positioning accuracy: ±0.03mm</li>
+                        <li data-lang-zh="Maximum speed: 80m/min" data-lang-en="Maximum speed: 80m/min">Maximum speed: 80m/min</li>
+                        <li data-lang-zh="Max. acceleration: 1.5G" data-lang-en="Max. acceleration: 1.5G">Max. acceleration: 1.5G</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod3/2-主图.jpg" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Working area: 30501520mm" data-lang-en="Working area: 30501520mm">Working area: 30501520mm</li>
+                        <li data-lang-zh="(Optional): (Optional)" data-lang-en="(Optional): (Optional)">(Optional): (Optional)</li>
+                        <li data-lang-zh="Laser power: 3000W/2000W/1500W/1000W" data-lang-en="Laser power: 3000W/2000W/1500W/1000W">Laser power: 3000W/2000W/1500W/1000W</li>
+                        <li data-lang-zh="Dimensions: 448027701950mm" data-lang-en="Dimensions: 448027701950mm">Dimensions: 44802770*1950mm</li>
+                        <li data-lang-zh="X/y axis positioning accuracy: ±0.05mm" data-lang-en="X/y axis positioning accuracy: ±0.05mm">X/y axis positioning accuracy: ±0.05mm</li>
+                        <li data-lang-zh="X/y axis repeat positioning accuracy: ±0.03mm" data-lang-en="X/y axis repeat positioning accuracy: ±0.03mm">X/y axis repeat positioning accuracy: ±0.03mm</li>
+                        <li data-lang-zh="Maximum speed: 80m/min" data-lang-en="Maximum speed: 80m/min">Maximum speed: 80m/min</li>
+                        <li data-lang-zh="Max. acceleration: 1.5G" data-lang-en="Max. acceleration: 1.5G">Max. acceleration: 1.5G</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="prod3/3-主图.jpg" alt="" class="w-full h-64 object-cover mb-4">
+                    <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                    <ul class="text-gray-600 list-disc pl-5">
+                        <li data-lang-zh="Working area: 6050mm2530mm" data-lang-en="Working area: 6050mm2530mm">Working area: 6050mm2530mm</li>
+                        <li data-lang-zh="(Optional): (Optional)" data-lang-en="(Optional): (Optional)">(Optional): (Optional)</li>
+                        <li data-lang-zh="Laser power: 3000W/2000W/1500W/1000W" data-lang-en="Laser power: 3000W/2000W/1500W/1000W">Laser power: 3000W/2000W/1500W/1000W</li>
+                        <li data-lang-zh="Dimensions: 780041002000mm" data-lang-en="Dimensions: 780041002000mm">Dimensions: 78004100*2000mm</li>
+                        <li data-lang-zh="X/y axis positioning accuracy: ±0.05mm" data-lang-en="X/y axis positioning accuracy: ±0.05mm">X/y axis positioning accuracy: ±0.05mm</li>
+                        <li data-lang-zh="X/y axis repeat positioning accuracy: ±0.03mm" data-lang-en="X/y axis repeat positioning accuracy: ±0.03mm">X/y axis repeat positioning accuracy: ±0.03mm</li>
+                        <li data-lang-zh="Maximum speed: 100m/min" data-lang-en="Maximum speed: 100m/min">Maximum speed: 100m/min</li>
+                        <li data-lang-zh="Max. acceleration: 1.5G" data-lang-en="Max. acceleration: 1.5G">Max. acceleration: 1.5G</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -68,33 +305,24 @@
     <section id="about" class="bg-blue-900 text-white py-16">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</h2>
-            <p class="text-lg mb-8" 
-           data-lang-zh="济南尧林贸易有限公司是一家专业。" 
-           data-lang-en="Jinan Yaolin Trading Co., Ltd. is located in the beautiful Spring City, Jinan.
-                The company has a 12,000-square-meter production workshop and an annual output of 11,500 sets of various laser equipment.
-                As the secretary-general unit of the Laser Professional Committee of the China Welding Association, 
-                the vice chairman unit of the Shandong Welding Association, 
-                and the main drafter of five national group standards for laser welding equipment, 
-                it holds 15 national invention patents.
-                The company has passed the Quality Management System Certification (ISO9001), 
-                Environmental Management System Certification (ISO14001), 
-                and Occupational Health and Safety Management System Certification (ISO45001). 
-                It has a complete production management system, ensuring efficient production, strict quality control, and reliable quality.
+            <p class="text-lg mb-8" style="white-space: pre-wrap;text-align: left;"  
+           data-lang-zh="
+           济南尧林贸易有限公司坐落于美丽的泉城济南。公司拥有 12,000 平方米的生产车间，各类激光设备年产量达 11,500 套。作为中国焊接协会激光专业委员会的秘书长单位、山东省焊接协会的副会长单位，以及五项激光焊接设备国家团体标准的主要起草单位，公司持有 15 项国家发明专利。公司已通过质量管理体系认证（ISO9001）、环境管理体系认证（ISO14001）和职业健康安全管理体系认证（ISO45001）。公司拥有完善的生产管理体系，确保生产高效、质量管控严格、产品质量可靠。
 
-                The company is a high-end equipment manufacturing enterprise dedicated to the research and development, production, sales and service of laser equipment.
-                It has gathered a group of talents with innovative and dedicated spirits. 
-                In the field of laser technology research and application, 
-                it has accumulated many years of customer experience and rich industry experience. 
-                The company has always been customer-oriented, adhering to the principle of "customer orientation", 
-                striving for "customer satisfaction", and pursuing "value creation". 
-                With sincerity and all efforts, we will help every customer solve problems. 
-                Develop products with a persistent and meticulous attitude. 
-                With meticulousness, we produce safe, practical and consistently high-quality products through standardized assembly lines. 
-                Integrate resources, make full use of all kinds of resources, and actively fulfill social responsibilities.
+           公司是一家致力于激光设备研发、生产、销售及服务的高端装备制造企业。公司汇聚了一批具有创新精神和敬业精神的人才。在激光技术研究与应用领域，积累了多年的客户服务经验和丰富的行业经验。公司始终以客户为导向，秉承 “以客户为中心” 的原则，力求 “让客户满意”，追求 “创造价值”。我们将以诚挚的态度和全力以赴的精神，帮助每一位客户解决问题。以执着、细致的态度开发产品。凭借严谨的作风，通过标准化的生产线生产出安全、实用且品质始终如一的优质产品。整合资源，充分利用各类资源，并积极履行社会责任。
+           
+           主营产品：激光焊接机、激光清洗机、激光切割机、激光切管机、激光打标机、激光喷码机、工业机器人以及自动化解决方案。我们支持各类激光设备的定制开发。" 
+           data-lang-en="  
+           Jinan Yaolin Trading Co., Ltd. is located in the beautiful Spring City, Jinan.The company has a 12,000-square-meter production workshop and an annual output of 11,500 sets of various laser equipment.As the secretary-general unit of the Laser Professional Committee of the China Welding Association, the vice chairman unit of the Shandong Welding Association,and the main drafter of five national group standards for laser welding equipment, it holds 15 national invention patents.The company has passed the Quality Management System Certification (ISO9001), Environmental Management System Certification (ISO14001), and Occupational Health and Safety Management System Certification (ISO45001). It has a complete production management system, ensuring efficient production, strict quality control, and reliable quality.  
 
-                Main products: Laser welding machines, laser cleaning machines, laser cutting machines, laser pipe cutting machines, laser marking machines, laser coding machines, industrial robots, and automation solutions. 
-                We support customized development of various laser equipment.">
-            济南尧林贸易有限公司是一家专业
+           The company is a high-end equipment manufacturing enterprise dedicated to the research and development, production, sales and service of laser equipment.It has gathered a group of talents with innovative and dedicated spirits. In the field of laser technology research and application, it has accumulated many years of customer experience and rich industry experience. The company has always been customer-oriented, adhering to the principle of.“customer orientation”, striving for “customer satisfaction”, and pursuing “value creation”. With sincerity and all efforts, we will help every customer solve problems. Develop products with a persistent and meticulous attitude. With meticulousness, we produce safe, practical and consistently high-quality products through standardized assembly lines.Integrate resources, make full use of all kinds of resources, and actively fulfill social responsibilities.  
+
+           Main products: Laser welding machines, laser cleaning machines, laser cutting machines, laser pipe cutting machines, laser marking machines, laser coding machines, industrial robots, and automation solutions. We support customized development of various laser equipment.">
+            济南尧林贸易有限公司坐落于美丽的泉城济南。公司拥有 12,000 平方米的生产车间，各类激光设备年产量达 11,500 套。作为中国焊接协会激光专业委员会的秘书长单位、山东省焊接协会的副会长单位，以及五项激光焊接设备国家团体标准的主要起草单位，公司持有 15 项国家发明专利。公司已通过质量管理体系认证（ISO9001）、环境管理体系认证（ISO14001）和职业健康安全管理体系认证（ISO45001）。公司拥有完善的生产管理体系，确保生产高效、质量管控严格、产品质量可靠。
+
+            公司是一家致力于激光设备研发、生产、销售及服务的高端装备制造企业。公司汇聚了一批具有创新精神和敬业精神的人才。在激光技术研究与应用领域，积累了多年的客户服务经验和丰富的行业经验。公司始终以客户为导向，秉承 “以客户为中心” 的原则，力求 “让客户满意”，追求 “创造价值”。我们将以诚挚的态度和全力以赴的精神，帮助每一位客户解决问题。以执着、细致的态度开发产品。凭借严谨的作风，通过标准化的生产线生产出安全、实用且品质始终如一的优质产品。整合资源，充分利用各类资源，并积极履行社会责任。
+
+            主营产品：激光焊接机、激光清洗机、激光切割机、激光切管机、激光打标机、激光喷码机、工业机器人以及自动化解决方案。我们支持各类激光设备的定制开发。
         </p>
     </div>
     </section>
@@ -105,9 +333,8 @@
         <div class="flex justify-center mb-8">
             <div class="text-left">
                 <p class="text-gray-700 mb-2" data-lang-zh="联系方式: +86 18763326648" data-lang-en="whatsapp: +86 18763326648">联系方式: +86 18763326648</p>
-                <p class="text-gray-700 mb-2" data-lang-zh="地址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室" data-lang-en="Add：Room 90B, Block A, Jinan Western Innovation Park, 
-                    No.2687 Ziwei Road, Guyunhu Street, Changqing District, Jinan City, Shandong Province">
-                地址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室
+                <p class="text-gray-700 mb-2" data-lang-zh="地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室" data-lang-en="Add：Room 90B, Block A, Jinan Western Innovation Park,No.2687 Ziwei Road, Guyunhu Street,
+                Changqing District, Jinan City, Shandong Province">地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室
                 </p>
            </div>
         </div>
@@ -154,21 +381,17 @@
         });
 
         // 本地图片轮循播放代码
-        const images = [
-            'image1/1746180610407.jpg', // 请替换为你的本地图片文件名
-            'image1/1746180646953.jpg',
-            'image1/1746180695441.jpg'
-        ];
+        const imageContainer = document.getElementById('imageContainer');
+        const images = imageContainer.children;
         let currentIndex = 0;
 
         function changeBackground() {
-            const homeSection = document.getElementById('home');
-            homeSection.style.backgroundImage = `url('${images[currentIndex]}')`;
             currentIndex = (currentIndex + 1) % images.length;
+            const translateValue = -currentIndex * 100 / images.length;
+            imageContainer.style.transform = `translateX(${translateValue}%)`;
         }
 
         setInterval(changeBackground, 3000); // 每 3 秒切换一次图片
     </script>
 </body>
-
 </html>
