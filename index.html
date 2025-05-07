@@ -9,32 +9,53 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* 添加平滑滚动效果 */
+            scroll-behavior: smooth;
         }
         /* 英雄区域样式调整 */
         #home {
             position: relative;
             overflow: hidden;
+            height: 100vh;
         }
         /* 图片容器样式 */
-       .image-container {
+        .image-container {
             display: flex;
-            width: 300%; /* 假设三张图片，所以是 300% */
+            width: 300%;
             height: 100%;
-            transition: transform 1s ease-in-out; /* 添加过渡动画 */
-        }
-        /* 单个图片样式 */
-       .image-container img {
-            min-width: 33.333333%; /* 假设三张图片，所以每张图片占 1/3 */
-            object-fit: cover;
+            transition: transform 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        /*[data-lang-en] {
-          text-indent: 2em;
-          white-space: pre-wrap;
-        }*/
+        /* 单个图片样式 */
+        .image-container img {
+            width: 33.333333%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            padding: 0 15px; /* 添加两侧内边距 */
+            box-sizing: border-box;
+        }
+
         /* 下拉菜单样式 */
-       .dropdown {
+        .dropdown {
             position: relative;
         }
         .dropdown-content {
@@ -48,19 +69,19 @@
             border-radius: 4px;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
             padding: 8px 0;
-            text-align: center; /* Center text */
+            text-align: center;
         }
         .dropdown-content a {
             color: white;
-            padding: 10px 20px; /* Increased horizontal padding */
+            padding: 10px 20px;
             text-decoration: none;
             display: block;
             transition: all 0.3s;
             font-size: 14px;
             line-height: 1.5;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
         }
         .dropdown-content a:hover {
             background-color: rgba(255,255,255,0.1);
@@ -109,17 +130,19 @@
     </nav>
 
     <!-- 英雄区域1 - 添加id="home" -->
-    <section id="home" class="h-screen relative">
+    <section id="home" class="relative">
         <div class="image-container" id="imageContainer">
             <!-- 请替换为你的本地图片文件名 -->
             <img src="image1/1746180610407.jpg" alt="Image 1">
             <img src="image1/1746180646953.jpg" alt="Image 2">
             <img src="image1/1746180695441.jpg" alt="Image 3">
         </div>
-        <div class="container mx-auto h-full flex flex-col justify-center items-center text-white z-10">
-            <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购" data-lang-en="Welcome to choose high-quality products">欢迎选购</h1>
-            <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的产品" data-lang-en="Provide a variety of styles and high-quality product">提供多种款式与高品质的产品</p>
-            <a href="#products" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
+        <div class="hero-content w-full absolute left-0 px-4">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购" data-lang-en="Welcome to choose high-quality products">欢迎选购</h1>
+                <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的产品" data-lang-en="Provide a variety of styles and high-quality product">提供多种款式与高品质的产品</p>
+                <a href="#products" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
+            </div>
         </div>
     </section>
 
@@ -134,7 +157,6 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <!-- <img src="prod1/1-主图.png" alt="" class="w-full h-64 object-cover mb-4"> -->
                     <div class="relative h-64 overflow-hidden mb-4">
                         <img src="prod1/1-主图.png" alt="" class="absolute w-full h-full object-contain object-center">
                     </div>
@@ -405,14 +427,40 @@
         const imageContainer = document.getElementById('imageContainer');
         const images = imageContainer.children;
         let currentIndex = 0;
+        const totalImages = images.length;
+
+        // 克隆第一张图片并添加到末尾
+        const firstImageClone = images[0].cloneNode(true);
+        imageContainer.appendChild(firstImageClone);
 
         function changeBackground() {
-            currentIndex = (currentIndex + 1) % images.length;
-            const translateValue = -currentIndex * 100 / images.length;
+            currentIndex++;
+            const translateValue = -currentIndex * (100 / totalImages);
+            
+            // 添加滑动动画
+            imageContainer.style.transition = 'transform 1s ease-in-out';
             imageContainer.style.transform = `translateX(${translateValue}%)`;
+            
+            // 当到达克隆图片时，无缝跳回第一张
+            if (currentIndex === totalImages) {
+                setTimeout(() => {
+                    // 禁用过渡效果瞬间跳转
+                    imageContainer.style.transition = 'none';
+                    imageContainer.style.transform = 'translateX(0)';
+                    currentIndex = 0;
+                    
+                    // 强制重绘后恢复过渡效果
+                    setTimeout(() => {
+                        imageContainer.style.transition = 'transform 1s ease-in-out';
+                    }, 20);
+                }, 1000); // 这个时间需要与过渡时间一致
+            }
         }
 
-        setInterval(changeBackground, 3000); // 每 3 秒切换一次图片
+        setInterval(changeBackground, 3000); // 每3秒切换一次
+
+        // 初始化位置
+        imageContainer.style.transform = 'translateX(0)';
     </script>
 </body>
 </html>
