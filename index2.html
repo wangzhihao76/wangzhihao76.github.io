@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>济南尧林贸易有限公司</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* 英雄区域样式调整 */
+        #home {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+        /* 图片容器样式 */
+        .image-container {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 单个图片样式 */
+        .image-container img {
+            width: 33.333333%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e3a8a;
+            min-width: max-content;
+            width: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 0;
+            text-align: center;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: nowrap;
+        }
+        .dropdown-content a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Product section header */
+        .product-section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .product-section-header h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 模态框样式 */
+        #productModal {
+            transition: opacity 0.3s ease;
+        }
+        #productModal:not(.hidden) {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- 导航栏 -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
+            <ul class="flex space-x-4">
+                <li><a href="#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
+                <li class="dropdown">
+                    <a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a>
+                    <div class="dropdown-content">
+                        <a href="#cutting-section" data-lang-zh="激光打标机" data-lang-en="Fiber laser cutting machine">激光打标机</a>
+                        <a href="#welding-section" data-lang-zh="激光焊接机" data-lang-en="Fiber laser welding machine">激光焊接机</a>
+                        <a href="#marking-section" data-lang-zh="激光切割机" data-lang-en="Fiber laser marking machine">激光切割机</a>
+                    </div>
+                </li>
+                <li><a href="#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
+                <li><a href="#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
+            </ul>
+            <div class="flex space-x-2">
+                <button id="lang-zh" class="text-white hover:text-gray-300">中文</button>
+                <span class="text-white">|</span>
+                <button id="lang-en" class="text-white hover:text-gray-300">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域1 - 添加id="home" -->
+    <section id="home" class="relative">
+        <div class="image-container" id="imageContainer">
+            <!-- 请替换为你的本地图片文件名 -->
+            <img src="image1/1746180610407.jpg" alt="Image 1">
+            <img src="image1/1746180646953.jpg" alt="Image 2">
+            <img src="image1/1746180695441.jpg" alt="Image 3">
+        </div>
+        <div class="hero-content w-full absolute left-0 px-4">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl font-bold mb-4" data-lang-zh="欢迎选购" data-lang-en="Welcome to choose high-quality products">欢迎选购</h1>
+                <p class="text-xl mb-8" data-lang-zh="提供多种款式与高品质的产品" data-lang-en="Provide a variety of styles and high-quality product">提供多种款式与高品质的产品</p>
+                <a href="#products" class="bg-white text-blue-900 py-3 px-6 rounded-full hover:bg-gray-200" data-lang-zh="了解更多" data-lang-en="Learn More">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品区域 - 添加id="products" -->
+    <section id="products" class="container mx-auto py-16">
+        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="我们的产品" data-lang-en="Our Products">我们的产品</h2>
+        
+        <!-- 激光打标机部分 -->
+        <div id="cutting-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光打标机" data-lang-en="Fiber Laser Cutting Machine">激光打标机</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod1/1-主图.png" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image" 
+                             data-title="激光打标机型号A" 
+                             data-details="技术参数：
+                             - 激光功率: 50W
+                             - 标记范围: 100×100mm
+                             - 标记速度: 7000mm/s
+                             - 电源: 220V/50Hz
+                             产品特点：
+                             - 高精度标记
+                             - 空气冷却系统
+                             - 适用于各种金属材料">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光打标机型号A</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod1/2-主图.jpg" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光打标机型号B"
+                             data-details="技术参数：
+                             - 激光功率: 30W
+                             - 标记范围: 70×70mm
+                             - 标记速度: 5000mm/s
+                             - 电源: 110V/220V
+                             产品特点：
+                             - 便携式设计
+                             - 操作简单
+                             - 适用于小型零件标记">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光打标机型号B</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod1/3-主图.jpg" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光打标机型号C"
+                             data-details="技术参数：
+                             - 激光功率: 100W
+                             - 标记范围: 300×300mm
+                             - 标记速度: 8000mm/s
+                             - 电源: 380V/50Hz
+                             产品特点：
+                             - 工业级设备
+                             - 高效率生产
+                             - 适用于大批量标记">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光打标机型号C</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 激光焊接机部分 -->
+        <div id="welding-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光焊接机" data-lang-en="Fiber Laser Welding Machine">激光焊接机</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod2/1-主图.png" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光焊接机型号A"
+                             data-details="技术参数：
+                             - 激光功率: 1000W
+                             - 焊接厚度: 0.5-3mm
+                             - 波长: 1070nm
+                             产品特点：
+                             - 手持式设计
+                             - 工业级水冷系统
+                             - 适用于精密焊接">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光焊接机型号A</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod2/2-主图.jpg" alt="激光焊接机应用" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光焊接机型号B"
+                             data-details="技术参数：
+                             - 激光功率: 2000W
+                             - 焊接厚度: 1-5mm
+                             - 波长: 1080nm
+                             产品特点：
+                             - 自动化集成
+                             - 高稳定性
+                             - 适用于批量生产">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光焊接机型号B</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod2/3-主图.jpg" alt="激光焊接机应用" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光焊接机型号C"
+                             data-details="技术参数：
+                             - 激光功率: 3000W
+                             - 焊接厚度: 2-8mm
+                             - 波长: 1064nm
+                             产品特点：
+                             - 重型工业设备
+                             - 多功能焊接头
+                             - 适用于厚板焊接">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光焊接机型号C</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 激光切割机部分 -->
+        <div id="marking-section" class="mb-16">
+            <div class="product-section-header">
+                <h2 data-lang-zh="激光切割机" data-lang-en="Fiber Laser Marking Machine">激光切割机</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod3/主图-3.jpg" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光切割机型号A"
+                             data-details="技术参数：
+                             - 激光功率: 1000W
+                             - 切割范围: 1500×3000mm
+                             - 切割厚度: 0.5-10mm
+                             产品特点：
+                             - 经济型设备
+                             - 操作简便
+                             - 适用于薄板切割">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光切割机型号A</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod3/主图-2.jpg" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光切割机型号B"
+                             data-details="技术参数：
+                             - 激光功率: 2000W
+                             - 切割范围: 2000×4000mm
+                             - 切割厚度: 1-16mm
+                             产品特点：
+                             - 中功率设备
+                             - 高性价比
+                             - 适用于多种材料">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光切割机型号B</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-64 overflow-hidden mb-4">
+                        <img src="prod3/主图-1.jpg" alt="" class="absolute w-full h-full object-contain object-center cursor-pointer product-image"
+                             data-title="激光切割机型号C"
+                             data-details="技术参数：
+                             - 激光功率: 3000W
+                             - 切割范围: 2500×6000mm
+                             - 切割厚度: 2-25mm
+                             产品特点：
+                             - 高功率设备
+                             - 全自动操作
+                             - 适用于工业级生产">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">激光切割机型号C</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们区域 - 添加id="about" -->
+    <section id="about" class="bg-blue-900 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</h2>
+            <p class="text-lg mb-8" style="white-space: pre-wrap;text-align: left;"  
+           data-lang-zh="
+           济南尧林贸易有限公司坐落于美丽的泉城济南。公司拥有 12,000 平方米的生产车间，各类激光设备年产量达 11,500 套。作为中国焊接协会激光专业委员会的秘书长单位、山东省焊接协会的副会长单位，以及五项激光焊接设备国家团体标准的主要起草单位，公司持有 15 项国家发明专利。公司已通过质量管理体系认证（ISO9001）、环境管理体系认证（ISO14001）和职业健康安全管理体系认证（ISO45001）。公司拥有完善的生产管理体系，确保生产高效、质量管控严格、产品质量可靠。
+
+           公司是一家致力于激光设备研发、生产、销售及服务的高端装备制造企业。公司汇聚了一批具有创新精神和敬业精神的人才。在激光技术研究与应用领域，积累了多年的客户服务经验和丰富的行业经验。公司始终以客户为导向，秉承 “以客户为中心” 的原则，力求 “让客户满意”，追求 “创造价值”。我们将以诚挚的态度和全力以赴的精神，帮助每一位客户解决问题。以执着、细致的态度开发产品。凭借严谨的作风，通过标准化的生产线生产出安全、实用且品质始终如一的优质产品。整合资源，充分利用各类资源，并积极履行社会责任。
+           
+           主营产品：激光焊接机、激光清洗机、激光切割机、激光切管机、激光打标机、激光喷码机、工业机器人以及自动化解决方案。我们支持各类激光设备的定制开发。" 
+           data-lang-en="  
+           Jinan Yaolin Trading Co., Ltd. is located in the beautiful Spring City, Jinan.The company has a 12,000-square-meter production workshop and an annual output of 11,500 sets of various laser equipment.As the secretary-general unit of the Laser Professional Committee of the China Welding Association, the vice chairman unit of the Shandong Welding Association,and the main drafter of five national group standards for laser welding equipment, it holds 15 national invention patents.The company has passed the Quality Management System Certification (ISO9001), Environmental Management System Certification (ISO14001), and Occupational Health and Safety Management System Certification (ISO45001). It has a complete production management system, ensuring efficient production, strict quality control, and reliable quality.  
+
+           The company is a high-end equipment manufacturing enterprise dedicated to the research and development, production, sales and service of laser equipment.It has gathered a group of talents with innovative and dedicated spirits. In the field of laser technology research and application, it has accumulated many years of customer experience and rich industry experience. The company has always been customer-oriented, adhering to the principle of.“customer orientation”, striving for “customer satisfaction”, and pursuing “value creation”. With sincerity and all efforts, we will help every customer solve problems. Develop products with a persistent and meticulous attitude. With meticulousness, we produce safe, practical and consistently high-quality products through standardized assembly lines.Integrate resources, make full use of all kinds of resources, and actively fulfill social responsibilities.  
+
+           Main products: Laser welding machines, laser cleaning machines, laser cutting machines, laser pipe cutting machines, laser marking machines, laser coding machines, industrial robots, and automation solutions. We support customized development of various laser equipment.">
+            济南尧林贸易有限公司坐落于美丽的泉城济南。公司拥有 12,000 平方米的生产车间，各类激光设备年产量达 11,500 套。作为中国焊接协会激光专业委员会的秘书长单位、山东省焊接协会的副会长单位，以及五项激光焊接设备国家团体标准的主要起草单位，公司持有 15 项国家发明专利。公司已通过质量管理体系认证（ISO9001）、环境管理体系认证（ISO14001）和职业健康安全管理体系认证（ISO45001）。公司拥有完善的生产管理体系，确保生产高效、质量管控严格、产品质量可靠。
+
+            公司是一家致力于激光设备研发、生产、销售及服务的高端装备制造企业。公司汇聚了一批具有创新精神和敬业精神的人才。在激光技术研究与应用领域，积累了多年的客户服务经验和丰富的行业经验。公司始终以客户为导向，秉承 “以客户为中心” 的原则，力求 “让客户满意”，追求 “创造价值”。我们将以诚挚的态度和全力以赴的精神，帮助每一位客户解决问题。以执着、细致的态度开发产品。凭借严谨的作风，通过标准化的生产线生产出安全、实用且品质始终如一的优质产品。整合资源，充分利用各类资源，并积极履行社会责任。
+
+            主营产品：激光焊接机、激光清洗机、激光切割机、激光切管机、激光打标机、激光喷码机、工业机器人以及自动化解决方案。我们支持各类激光设备的定制开发。
+        </p>
+    </div>
+    </section>
+
+    <!-- 联系我们区域 - 添加id="contact" -->
+    <section id="contact" class="container mx-auto py-16">
+        <h2 class="text-3xl font-bold text-center mb-8" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</h2>
+        <div class="flex justify-center mb-8">
+            <div class="text-left">
+                <p class="text-gray-700 mb-2" data-lang-zh="联系方式: +86 18763326648" data-lang-en="whatsapp: +86 18763326648">联系方式: +86 18763326648</p>
+                <p class="text-gray-700 mb-2" data-lang-zh="地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室" data-lang-en="Add：Room 90B, Block A, Jinan Western Innovation Park,No.2687 Ziwei Road, Guyunhu Street,
+                Changqing District, Jinan City, Shandong Province">地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室
+                </p>
+           </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p data-lang-zh="&copy; 2025 济南尧林贸易有限公司. 保留所有权利." data-lang-en="&copy; 2025 Jinan Yaolin Trading Co., Ltd. All rights reserved.">&copy; 2025 济南尧林贸易有限公司. 保留所有权利.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 产品详情模态框 -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative h-full w-full flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+                <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="p-6" id="modalContent">
+                    <!-- 动态内容将在这里加载 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const langZhBtn = document.getElementById('lang-zh');
+        const langEnBtn = document.getElementById('lang-en');
+
+        langZhBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'zh-CN';
+            const elements = document.querySelectorAll('[data-lang-zh]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-zh');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-zh]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-zh');
+            });
+            document.title = '济南尧林贸易有限公司';
+        });
+
+        langEnBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'en';
+            const elements = document.querySelectorAll('[data-lang-en]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-en');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-en]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-en');
+            });
+            document.title = 'Jinan Yaolin Trading Co., Ltd.';
+        });
+
+        // 本地图片轮循播放代码
+        const imageContainer = document.getElementById('imageContainer');
+        const images = imageContainer.children;
+        let currentIndex = 0;
+        const totalImages = images.length;
+
+        // 克隆第一张图片并添加到末尾
+        const firstImageClone = images[0].cloneNode(true);
+        imageContainer.appendChild(firstImageClone);
+
+        function changeBackground() {
+            currentIndex++;
+            const translateValue = -currentIndex * (100 / totalImages);
+            
+            // 添加滑动动画
+            imageContainer.style.transition = 'transform 1s ease-in-out';
+            imageContainer.style.transform = `translateX(${translateValue}%)`;
+            
+            // 当到达克隆图片时，无缝跳回第一张
+            if (currentIndex === totalImages) {
+                setTimeout(() => {
+                    // 禁用过渡效果瞬间跳转
+                    imageContainer.style.transition = 'none';
+                    imageContainer.style.transform = 'translateX(0)';
+                    currentIndex = 0;
+                    
+                    // 强制重绘后恢复过渡效果
+                    setTimeout(() => {
+                        imageContainer.style.transition = 'transform 1s ease-in-out';
+                    }, 20);
+                }, 1000); // 这个时间需要与过渡时间一致
+            }
+        }
+
+        setInterval(changeBackground, 3000); // 每3秒切换一次
+
+        // 初始化位置
+        imageContainer.style.transform = 'translateX(0)';
+
+        // 产品模态框功能
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+        const productImages = document.querySelectorAll('.product-image');
+
+        // 点击产品图片打开模态框
+        productImages.forEach(img => {
+            img.addEventListener('click', function() {
+                const title = this.getAttribute('data-title');
+                const details = this.getAttribute('data-details');
+                
+                modalContent.innerHTML = `
+                    <h2 class="text-2xl font-bold mb-4">${title}</h2>
+                    <img src="${this.src}" alt="${title}" class="w-full h-64 object-contain mb-4">
+                    <div class="prose max-w-none">
+                        ${details.replace(/\n/g, '<br>')}
+                    </div>
+                `;
+                
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // 关闭模态框
+        closeModal.addEventListener('click', function() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // 点击模态框外部关闭
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
