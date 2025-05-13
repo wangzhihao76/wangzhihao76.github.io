@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>产品详情 - 济南尧林贸易有限公司</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e3a8a;
+            min-width: max-content;
+            width: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 0;
+            text-align: center;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: nowrap;
+        }
+        .dropdown-content a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Product section header */
+        .product-section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .product-section-header h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- 导航栏（与主页一致） -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
+            <ul class="flex space-x-4">
+                <li><a href="#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
+                <li class="dropdown">
+                    <a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a>
+                    <div class="dropdown-content">
+                        <a href="#cutting-section" data-lang-zh="激光打标机" data-lang-en="Fiber laser cutting machine">激光打标机</a>
+                        <a href="#welding-section" data-lang-zh="激光焊接机" data-lang-en="Fiber laser welding machine">激光焊接机</a>
+                        <a href="#marking-section" data-lang-zh="激光切割机" data-lang-en="Fiber laser marking machine">激光切割机</a>
+                    </div>
+                </li>
+                <li><a href="#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
+                <li><a href="#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
+            </ul>
+            <div class="flex space-x-2">
+                <button id="lang-zh" class="text-white hover:text-gray-300">中文</button>
+                <span class="text-white">|</span>
+                <button id="lang-en" class="text-white hover:text-gray-300">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 产品详情内容区 -->
+    <main class="container mx-auto py-8">
+        <!-- 返回按钮 -->
+        <div class="mb-6">
+            <a href="#" onclick="returnToProducts()" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                <i class="fas fa-arrow-left mr-2" data-lang-zh="  返回产品列表" data-lang-en="Return to product list">  返回产品列表</i>
+            </a>
+        </div>
+
+        <!-- 产品详情内容 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="md:flex">
+                <!-- 产品图片 -->
+                <div class="md:w-1/2 p-6">
+                    <img src="../prod1/3-主图.jpg" alt="激光打标机" class="w-full h-auto object-contain max-h-96 mx-auto">
+                    
+                </div>
+
+                <!-- 产品信息 -->
+                <div class="md:w-1/2 p-6">
+                    <h1 class="text-3xl font-bold mb-4">Fiber Laser Cutting Machine</h1>
+                    <div class="flex items-center mb-4">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium" data-lang-zh="热销产品" data-lang-en="hot-sale product">热销产品</span>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang-zh="产品描述" data-lang-en="product description">产品描述</h3>
+                        <p>  Includes 20 Watts with options up to 100W Increasing power increases the speed of marking or the engraving depth into the metal surface. New, air cooled system with 100,000+ hours rated life span.Includes a 2-Year Warranty.Its 1064nm wavelength provides exceptional metal marking, with a 65 µm spot able to engrave with smooth and delicate edging, minimal additional processing, and no waste of materials.</p>
+                    </div>
+
+                    <!-- <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</h3>
+                        
+                    </div> -->
+
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang-zh="应用领域" data-lang-en="application area ">应用领域</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" data-lang-zh="五金工具" data-lang-en="Hardware Tools">五金工具</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" data-lang-zh="电子元件" data-lang-en="Electronic Component">电子元件</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" data-lang-zh="医疗器械" data-lang-en="Medical Equipment">医疗器械</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" data-lang-zh="汽车配件" data-lang-en="Auto Parts">汽车配件</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-4">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-envelope mr-2" data-lang-zh="获取报价" data-lang-en="Get a quote">获取报价</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 产品详情选项卡 -->
+            <div class="border-t">
+                <div class="container mx-auto px-6 py-4">
+                    <div class="flex border-b">
+                        <button class="tab-button active px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600" data-tab="specs" data-lang-zh="技术参数" data-lang-en="Technical Specifications">技术参数</button>
+                        <button class="tab-button px-4 py-2 font-medium text-gray-500" data-tab="video" data-lang-zh="作业视频" data-lang-en="video">作业视频</button>
+                        <button class="tab-button px-4 py-2 font-medium text-gray-500" data-tab="contact" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</button>
+                    </div>
+
+                    <div class="tab-content py-4">
+                        <!-- 技术参数内容 -->
+                        <div id="specs-tab" class="tab-pane active">
+                            <div class="prose max-w-none">
+                                <ul class="text-gray-600 list-disc pl-5">
+                                    <li data-lang-zh="Laser Type: Fiber laser" data-lang-en="Laser Type: Fiber laser">Laser Type: Fiber laser</li>
+                                    <li data-lang-zh="Laser Power: 20W / 30W / 50W optional" data-lang-en="Laser Power: 20W / 30W / 50W optional">Laser Power: 20W / 30W / 50W optional</li>
+                                    <li data-lang-zh="Laser Wavelength: 1064nm" data-lang-en="Laser Wavelength: 1064nm">Laser Wavelength: 1064nm</li>
+                                    <li data-lang-zh="Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional" data-lang-en="Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional">Marking Area: 110×110mm / 150×150mm / 175×175mm / 200×200mm / 300×300mm optional</li>
+                                    <li data-lang-zh="Marking Line Width: 0.01 - 0.1mm" data-lang-en="Marking Line Width: 0.01 - 0.1mm">Marking Line Width: 0.01 - 0.1mm</li>
+                                    <li data-lang-zh="Max Marking Speed: 7000mm/s" data-lang-en="Max Marking Speed: 7000mm/s">Max Marking Speed: 7000mm/s</li>
+                                    <li data-lang-zh="Min Letter: 0.15mm" data-lang-en="Min Letter: 0.15mm">Min Letter: 0.15mm</li>
+                                    <li data-lang-zh="Software: EZCAD2" data-lang-en="Software: EZCAD2">Software: EZCAD2</li>
+                                    <li data-lang-zh="Cooling Way: Forced air cooling" data-lang-en="Cooling Way: Forced air cooling">Cooling Way: Forced air cooling</li>
+                                    <li data-lang-zh="Beam Quality: Less than 1.4mm" data-lang-en="Beam Quality: Less than 1.4mm">Beam Quality: Less than 1.4mm</li>
+                                    <li data-lang-zh="Input Power: 0.5KW" data-lang-en="Input Power: 0.5KW">Input Power: 0.5KW</li>
+                                    <li data-lang-zh="Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop" data-lang-en="Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop">Compatible Software: EZCAD2, CorelDraw, AutoCAD, Photoshop</li> 
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- 作业视频内容 -->
+                        <div id="video-tab" class="tab-pane hidden">
+                            <div class="prose max-w-none">
+                                <div class="relative h-64 overflow-hidden mb-4">
+                                    <video controls class="absolute w-full h-full object-contain object-center">
+                                        <source src="作业视频.mp4" type="video/mp4">
+                                        你的浏览器不支持视频播放。（Your browser does not support video playback.）
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 联系我们 -->
+                        <div id="video-tab" class="tab-pane hidden">
+                            <div class="prose max-w-none">
+                                <div class="relative h-64 overflow-hidden mb-4">
+                                    <div class="text-left">
+                                        <p class="text-gray-700 mb-2" data-lang-zh="联系方式: +86 18763326648" data-lang-en="whatsapp: +86 18763326648">联系方式: +86 18763326648</p>
+                                        <p class="text-gray-700 mb-2" data-lang-zh="地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室" data-lang-en="Add：Room 90B, Block A, Jinan Western Innovation Park,No.2687 Ziwei Road, Guyunhu Street,
+                                        Changqing District, Jinan City, Shandong Province">地      址：山东省济南市长清区崮云湖街道紫薇路2687号济南西部创新园A座90B室
+                                        </p>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="border-t">
+                <div class="container mx-auto px-6 py-4">
+                    <div class="flex border-b">
+                        <button class="tab-button active px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600">技术参数</button>
+                        <button class="tab-button px-4 py-2 font-medium text-gray-500">作业视频</button>
+                    </div>
+
+                    <div class="tab-content py-4">
+                        <div class="prose max-w-none">
+                            <h3>产品特点</h3>
+                            <ul>
+                                <li>采用进口光纤激光器，寿命长达10万小时</li>
+                                <li>打标速度快，精度高，最小线宽可达0.01mm</li>
+                                <li>支持多种图形文字打标，可打标序列号、二维码等</li>
+                                <li>整机免维护，无需耗材，使用成本低</li>
+                            </ul>
+
+                            <h3 class="mt-6">设备组成</h3>
+                            <img src="../prod1/1-组成图.jpg" alt="设备组成" class="my-4 border rounded-lg">
+
+                            <h3 class="mt-6">售后服务</h3>
+                            <p>提供1年质保，终身维护，24小时内响应服务请求，48小时内提供解决方案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </main>
+
+    <!-- 相关产品 -->
+    <!-- <section class="container mx-auto py-8">
+        <h2 class="text-2xl font-bold mb-6">相关产品</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                <a href="product2.html" class="block">
+                    <img src="../prod1/2-主图.jpg" alt="激光打标机B" class="w-full h-48 object-contain p-4">
+                    <div class="p-4">
+                        <h3 class="font-bold">激光打标机型号B</h3>
+                        <p class="text-sm text-gray-600 mt-1">便携式设计，适合小型零件打标</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- 页脚（与主页一致） -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p data-lang-zh="&copy; 2025 济南尧林贸易有限公司. 保留所有权利." data-lang-en="&copy; 2025 Jinan Yaolin Trading Co., Ltd. All rights reserved.">&copy; 2025 济南尧林贸易有限公司. 保留所有权利.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const langZhBtn = document.getElementById('lang-zh');
+        const langEnBtn = document.getElementById('lang-en');
+
+        langZhBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'zh-CN';
+            const elements = document.querySelectorAll('[data-lang-zh]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-zh');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-zh]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-zh');
+            });
+            document.title = '济南尧林贸易有限公司';
+        });
+        langEnBtn.addEventListener('click', () => {
+            document.documentElement.lang = 'en';
+            const elements = document.querySelectorAll('[data-lang-en]');
+            elements.forEach((element) => {
+                element.textContent = element.getAttribute('data-lang-en');
+            });
+            const inputs = document.querySelectorAll('[data-placeholder-en]');
+            inputs.forEach((input) => {
+                input.placeholder = input.getAttribute('data-placeholder-en');
+            });
+            document.title = 'Jinan Yaolin Trading Co., Ltd.';
+        });
+
+        function returnToProducts() {
+            // 尝试从URL获取来源信息
+            const referrer = document.referrer;
+            
+            if(referrer && referrer.includes('index.html')) {
+                // 如果是从主页跳转过来的，则返回主页并滚动到产品区域
+                location.href = 'html/index_v8.html#products';
+            } else {
+                // 否则直接返回主页
+                location.href = 'html/index_v8.html';
+            }
+            return false;
+        }
+
+        // 选项卡切换
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active状态
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'text-blue-600', 'border-blue-600');
+                        btn.classList.add('text-gray-500');
+                    });
+                    
+                    // 给当前按钮添加active状态
+                    this.classList.add('active', 'text-blue-600', 'border-blue-600');
+                    this.classList.remove('text-gray-500');
+                    
+                    // 隐藏所有内容
+                    document.querySelectorAll('.tab-pane').forEach(pane => {
+                        pane.classList.remove('active');
+                        pane.classList.add('hidden');
+                    });
+                    
+                    // 显示对应内容
+                    const tabId = this.getAttribute('data-tab');
+                    const activePane = document.getElementById(`${tabId}-tab`);
+                    if(activePane) {
+                        activePane.classList.remove('hidden');
+                        activePane.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        
+    </script>
+</body>
+</html>
