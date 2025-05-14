@@ -77,17 +77,17 @@
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-2xl font-bold" data-lang-zh="济南尧林贸易有限公司" data-lang-en="Jinan Yaolin Trading Co., Ltd.">济南尧林贸易有限公司</a>
             <ul class="flex space-x-4">
-                <li><a href="#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
+                <li><a href="../index.html#home" class="hover:text-gray-300" data-lang-zh="首页" data-lang-en="Home">首页</a></li>
                 <li class="dropdown">
-                    <a href="#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a>
+                    <a href="../index.html#products" class="hover:text-gray-300" data-lang-zh="产品" data-lang-en="Products">产品</a>
                     <div class="dropdown-content">
-                        <a href="#cutting-section" data-lang-zh="激光打标机" data-lang-en="Fiber laser cutting machine">激光打标机</a>
-                        <a href="#welding-section" data-lang-zh="激光焊接机" data-lang-en="Fiber laser welding machine">激光焊接机</a>
-                        <a href="#marking-section" data-lang-zh="激光切割机" data-lang-en="Fiber laser marking machine">激光切割机</a>
+                        <a href="../index.html#cutting-section" data-lang-zh="激光打标机" data-lang-en="Fiber laser cutting machine">激光打标机</a>
+                        <a href="../index.html#welding-section" data-lang-zh="激光焊接机" data-lang-en="Fiber laser welding machine">激光焊接机</a>
+                        <a href="../index.html#marking-section" data-lang-zh="激光切割机" data-lang-en="Fiber laser marking machine">激光切割机</a>
                     </div>
                 </li>
-                <li><a href="#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
-                <li><a href="#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
+                <li><a href="../index.html#about" class="hover:text-gray-300" data-lang-zh="关于我们" data-lang-en="About Us">关于我们</a></li>
+                <li><a href="../index.html#contact" class="hover:text-gray-300" data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</a></li>
             </ul>
             <div class="flex space-x-2">
                 <button id="lang-zh" class="text-white hover:text-gray-300">中文</button>
@@ -297,10 +297,10 @@
             
             if(referrer && referrer.includes('index.html')) {
                 // 如果是从主页跳转过来的，则返回主页并滚动到产品区域
-                location.href = 'https://wangzhihao76.github.io/#welding-section';
+                location.href = '../index.html#welding-section';
             } else {
                 // 否则直接返回主页
-                location.href = 'https://wangzhihao76.github.io/#welding-section';
+                location.href = '../index.html#welding-section';
             }
             return false;
         }
