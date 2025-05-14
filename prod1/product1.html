@@ -146,7 +146,7 @@ Integrated fiber laser marker come with smart machine body, convenient to take a
 
                     <div class="border-t pt-4">
                         <button id="getQuoteBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                            <i class="fas fa-envelope mr-2" style="white-space: pre-wrap;text-align: left;"></i>  获取报价(Get a quote)
+                            <i class="fas fa-envelope mr-2" style="white-space: pre-wrap;text-align: left;" data-lang-zh="  获取报价" data-lang-en="  Get a quote">  获取报价</i>
                         </button>
                     </div>
                 </div>
@@ -324,7 +324,7 @@ Integrated fiber laser marker come with smart machine body, convenient to take a
             if (getQuoteBtn && contactTabBtn) {
                 getQuoteBtn.addEventListener('click', function() {
                     contactTabBtn.click();
-                    document.querySelector('.tab-content').scrollIntoView({
+                    document.querySelector('.contact-tab').scrollIntoView({
                         behavior: 'smooth'
                     });
                     let contactTab = document.getElementById('contact-tab');
