@@ -268,32 +268,33 @@ Integrated fiber laser marker come with smart machine body, convenient to take a
     </footer>
 
     <script>
-        const langZhBtn = document.getElementById('lang-zh');
-        const langEnBtn = document.getElementById('lang-en');
-
-        langZhBtn.addEventListener('click', () => {
-            document.documentElement.lang = 'zh-CN';
-            const elements = document.querySelectorAll('[data-lang-zh]');
-            elements.forEach((element) => {
-                element.textContent = element.getAttribute('data-lang-zh');
+        document.addEventListener('DOMContentLoaded', function() {
+            // 默认显示英文
+            setLanguage('en');
+            
+            // 中文按钮点击事件
+            document.getElementById('lang-zh').addEventListener('click', function() {
+                setLanguage('zh');
             });
-            const inputs = document.querySelectorAll('[data-placeholder-zh]');
-            inputs.forEach((input) => {
-                input.placeholder = input.getAttribute('data-placeholder-zh');
+            
+            // 英文按钮点击事件
+            document.getElementById('lang-en').addEventListener('click', function() {
+                setLanguage('en');
             });
-            document.title = '济南尧林贸易有限公司';
-        });
-        langEnBtn.addEventListener('click', () => {
-            document.documentElement.lang = 'en';
-            const elements = document.querySelectorAll('[data-lang-en]');
-            elements.forEach((element) => {
-                element.textContent = element.getAttribute('data-lang-en');
-            });
-            const inputs = document.querySelectorAll('[data-placeholder-en]');
-            inputs.forEach((input) => {
-                input.placeholder = input.getAttribute('data-placeholder-en');
-            });
-            document.title = 'Jinan Yaolin Trading Co., Ltd.';
+            
+            // 设置语言函数
+            function setLanguage(lang) {
+                // 获取所有带有语言属性的元素
+                const elements = document.querySelectorAll('[data-lang-zh], [data-lang-en]');
+                
+                elements.forEach(element => {
+                    if (lang === 'zh' && element.getAttribute('data-lang-zh')) {
+                        element.textContent = element.getAttribute('data-lang-zh');
+                    } else if (lang === 'en' && element.getAttribute('data-lang-en')) {
+                        element.textContent = element.getAttribute('data-lang-en');
+                    }
+                });
+            }
         });
 
         function returnToProducts() {
