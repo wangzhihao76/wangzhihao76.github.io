@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="border-t pt-4">
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        <button id="getQuoteBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
                             <i class="fas fa-envelope mr-2" style="white-space: pre-wrap;text-align: left;" data-lang-zh="  获取报价" data-lang-en="  Get a quote">  获取报价</i>
                         </button>
                     </div>
@@ -314,8 +314,21 @@
 
         // 选项卡切换
         document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            
+            const getQuoteBtn = document.getElementById('getQuoteBtn');
+            const contactTabBtn = document.querySelector('.tab-button[data-tab="contact"]');
+            // 如果按钮存在，则添加点击事件
+            if (getQuoteBtn && contactTabBtn) {
+                getQuoteBtn.addEventListener('click', function() {
+                    contactTabBtn.click();
+                    document.querySelector('.tab-content').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    let contactTab = document.getElementById('contact-tab');
+                    contactTabcontactTab.classList.remove('hidden');
+                    contactTab.classList.add('active');
+                });
+            }
+            const tabButtons = document.querySelectorAll('.tab-button');     
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // 移除所有按钮的active状态
