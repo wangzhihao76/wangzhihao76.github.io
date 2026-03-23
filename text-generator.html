@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字生成工具</title>
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #f4efe6 0%, #e9f2f0 100%);
+            --panel: rgba(255, 255, 255, 0.9);
+            --panel-border: rgba(41, 73, 76, 0.14);
+            --ink: #1f2e2f;
+            --muted: #5f7271;
+            --accent: #2c7873;
+            --accent-strong: #1d5c58;
+            --shadow: 0 18px 48px rgba(31, 46, 47, 0.12);
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+        }
+
+        .page {
+            width: min(960px, calc(100% - 32px));
+            margin: 40px auto;
+            padding: 28px;
+            border: 1px solid var(--panel-border);
+            border-radius: var(--radius);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+
+        .hero p,
+        .tip,
+        .meta {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: minmax(180px, 260px) 1fr auto;
+            gap: 14px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid rgba(44, 120, 115, 0.24);
+            border-radius: 14px;
+            background: #fff;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input,
+        select {
+            height: 48px;
+            padding: 0 14px;
+        }
+
+        textarea {
+            min-height: 320px;
+            padding: 18px;
+            resize: vertical;
+            line-height: 1.85;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(44, 120, 115, 0.12);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            height: 48px;
+            padding: 0 18px;
+            border: 0;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .primary:hover {
+            background: var(--accent-strong);
+        }
+
+        .secondary {
+            background: rgba(44, 120, 115, 0.1);
+            color: var(--accent-strong);
+        }
+
+        .secondary:hover {
+            background: rgba(44, 120, 115, 0.16);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 12px 0 16px;
+        }
+
+        .stat-card {
+            min-width: 180px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(44, 120, 115, 0.08);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 26px;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .footer {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 820px) {
+            .page {
+                width: calc(100% - 20px);
+                margin: 18px auto;
+                padding: 18px;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+
+            .button-group {
+                width: 100%;
+            }
+
+            .button-group button {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .footer {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="page">
+    <section class="hero">
+        <p class="meta">静态页面工具</p>
+        <h1>按字数自动生成测试文字</h1>
+        <p>输入目标字数后自动生成中文测试内容 默认不带标点 适合直接验证字数限制和保存校验</p>
+    </section>
+
+    <section class="controls">
+        <div class="field">
+            <label for="targetCount">目标字数</label>
+            <input id="targetCount" type="number" min="1" max="5000" value="200" placeholder="请输入目标字数">
+        </div>
+        <div class="field">
+            <label for="themeSelect">文本主题</label>
+            <select id="themeSelect">
+                <option value="medical">医学培训</option>
+                <option value="general">通用叙述</option>
+                <option value="service">服务提升</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button id="regenerateBtn" class="primary" type="button">重新生成</button>
+            <button id="copyBtn" class="secondary" type="button">复制文字</button>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <strong id="currentCount">0</strong>
+            <span>当前字数</span>
+        </div>
+        <div class="stat-card">
+            <strong id="targetDisplay">200</strong>
+            <span>目标字数</span>
+        </div>
+    </section>
+
+    <div class="field">
+        <label for="resultText">生成结果</label>
+        <textarea id="resultText" spellcheck="false"></textarea>
+    </div>
+
+    <div class="footer">
+        <p class="tip">规则 只输出中文字符 不拼接标点 输入字数变化后自动更新</p>
+        <p id="copyState" class="meta"></p>
+    </div>
+</main>
+
+<script>
+    (function () {
+        const themeBlocks = {
+            medical: [
+                '春季培训聚焦临床规范诊疗质量持续改进学科协作能力提升教学组织科研转化应用患者安全感染防控合理用药慢病管理急危重症识别康复指导护理协同信息建设基层帮扶人才培养实践操作沟通能力强化项目实施流程优化课程设计评估反馈区域联动资源整合健康宣教团队合作综合保障',
+                '继续医学教育围绕规范实施质量控制能力训练案例分析专题研讨经验交流成果共享制度落实服务改进人才储备岗位胜任力提升展开系统学习强化临床思维流程意识责任意识协作意识提升培训成效促进医疗质量与服务水平稳步提高',
+                '课程内容突出前沿知识技术推广管理实践教学示范病例复盘应急处置多学科配合科研方法临床路径标准执行持续监测评价反馈优化推动学员在实际工作中形成可复制可推广的改进经验增强综合服务能力'
+            ],
+            general: [
+                '本次学习围绕目标拆解执行推进过程优化经验总结问题分析协同配合能力建设效果反馈持续提升等内容展开系统训练帮助参训人员在实际工作中形成更清晰的方法意识与更稳定的执行能力提高整体工作质量和协作效率',
+                '文字内容用于测试长度限制输入校验保存提示页面展示复制功能数据回显和边界情况处理通过重复但自然的中文表达快速生成指定字数内容便于开发测试联调和前端页面自查减少手工凑字时间提升验证效率',
+                '工具页面支持直接输入目标字数自动刷新结果并同步显示当前长度生成内容保持连续中文表达不附加标点适合验证精确长度截断逻辑保存前提示逻辑以及不同字段在极限输入情况下的稳定表现'
+            ],
+            service: [
+                '服务提升工作围绕流程梳理响应效率沟通质量体验优化问题闭环协同机制资源调配标准落实风险防范应急处置回访管理培训赋能监督检查持续改进等环节展开通过系统推进不断增强整体保障能力和群众满意度',
+                '团队建设强调分工明确协作顺畅责任落实信息共享能力互补制度执行过程复盘和结果评估通过常态化学习演练和总结推动各项任务高效有序完成形成稳定可靠的服务支撑体系提升整体运行效能',
+                '围绕需求识别方案制定任务执行过程跟踪效果分析经验沉淀标准优化等环节开展连续改进推动服务模式更新管理方式升级人员能力增强和资源配置优化进一步夯实高质量发展基础'
+            ]
+        };
+
+        const targetInput = document.getElementById('targetCount');
+        const themeSelect = document.getElementById('themeSelect');
+        const resultText = document.getElementById('resultText');
+        const currentCount = document.getElementById('currentCount');
+        const targetDisplay = document.getElementById('targetDisplay');
+        const copyState = document.getElementById('copyState');
+        const regenerateBtn = document.getElementById('regenerateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+
+        function countChars(text) {
+            return Array.from(text || '').length;
+        }
+
+        function normalizeTarget() {
+            const raw = Number(targetInput.value);
+            const next = Math.max(1, Math.min(5000, Number.isFinite(raw) ? Math.floor(raw) : 200));
+            targetInput.value = String(next);
+            targetDisplay.textContent = String(next);
+            return next;
+        }
+
+        function buildPool(theme) {
+            const blocks = themeBlocks[theme] || themeBlocks.medical;
+            const merged = blocks.join('');
+            return merged || themeBlocks.medical.join('');
+        }
+
+        function generateExactText(target, theme) {
+            const pool = buildPool(theme);
+            if (!pool) return '';
+            let text = '';
+            let offset = Math.floor(Math.random() * pool.length);
+            while (countChars(text) < target) {
+                const piece = pool.slice(offset) + pool.slice(0, offset);
+                text += piece;
+                offset = (offset + 17) % pool.length;
+            }
+            return Array.from(text).slice(0, target).join('');
+        }
+
+        function refreshStats() {
+            currentCount.textContent = String(countChars(resultText.value));
+        }
+
+        function regenerate() {
+            const target = normalizeTarget();
+            resultText.value = generateExactText(target, themeSelect.value);
+            refreshStats();
+            copyState.textContent = '';
+        }
+
+        async function copyText() {
+            try {
+                await navigator.clipboard.writeText(resultText.value);
+                copyState.textContent = '已复制到剪贴板';
+            } catch (error) {
+                resultText.focus();
+                resultText.select();
+                copyState.textContent = '复制失败 请手动复制';
+            }
+        }
+
+        targetInput.addEventListener('input', regenerate);
+        themeSelect.addEventListener('change', regenerate);
+        regenerateBtn.addEventListener('click', regenerate);
+        copyBtn.addEventListener('click', copyText);
+        resultText.addEventListener('input', refreshStats);
+
+        regenerate();
+    })();
+</script>
+</body>
+</html>
